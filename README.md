@@ -1,2 +1,4 @@
-# memories-mern-project
-MERN FULL STACK
+# Memories / MERN FULL STACK
+
+Setup:
+- run ```npm i && npm start``` for both client and server side to start the app
