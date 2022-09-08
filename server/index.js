@@ -23,8 +23,10 @@ app.get('/', (req, res) => {
 
 // const CONNECTION_URL = 'mongodb+srv://LikithKumarDK:Vf6nQyBQNrVTOIaP@cluster0.sxrhdub.mongodb.net/?retryWrites=true&w=majority';
 
-// Immediately Populated By Heroku
+// Normal
 // const port = process.env.PORT || 5000;
+
+// Immediately Populated By Heroku
 const { PORT=3000, LOCAL_ADDRESS='0.0.0.0' } = process.env
 
 // mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
