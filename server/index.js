@@ -24,7 +24,8 @@ app.get('/', (req, res) => {
 // const CONNECTION_URL = 'mongodb+srv://LikithKumarDK:Vf6nQyBQNrVTOIaP@cluster0.sxrhdub.mongodb.net/?retryWrites=true&w=majority';
 
 // Immediately Populated By Heroku
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
+const { PORT=3000, LOCAL_ADDRESS='0.0.0.0' } = process.env
 
 // mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 //     .then(() => app.listen(port, () => console.log(`Server running on port ${port}`)))
@@ -33,5 +34,5 @@ const port = process.env.PORT || 5000;
 // mongoose.set('useFindAndModify', false);
 
 mongoose.connect(process.env.CONNECTION_URL)
-    .then(() => app.listen(port, () => console.log(`Server running on port ${port}`)))
+    .then(() => app.listen(PORT, LOCAL_ADDRESS, () => console.log(`Server running on port ${PORT}`)))
     .catch((err) => console.log(err.message));
