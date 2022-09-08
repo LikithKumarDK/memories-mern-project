@@ -27,7 +27,7 @@ const SignUp = () => {
         function start() {
             gapi.client.init({
                 clientId: process.env.REACT_APP_GOOGLE_AUTH_PUBLIC_GOOGLE_CLIENT_ID,
-                clientId: "315387236518-fil9v86hjtb096pjd35jithoo877hqhu.apps.googleusercontent.com",
+                // clientId: "315387236518-fil9v86hjtb096pjd35jithoo877hqhu.apps.googleusercontent.com",
                 scope: 'email',
             });
         }
