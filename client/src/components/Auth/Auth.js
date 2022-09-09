@@ -58,7 +58,6 @@ const SignUp = () => {
         const token = res?.tokenId;
 
         try {
-            console.log("sssss");
             dispatch({ type: AUTH, data: { result, token } });
 
             history.push('/');
