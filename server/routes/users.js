@@ -3,6 +3,7 @@ import express from "express";
 import { signin, signup } from "../controllers/users.js";
 
 const router = express.Router();
+
 /**
 * @swagger
 * components:
@@ -42,7 +43,7 @@ const router = express.Router();
 
 /**
 * @swagger
-* /user/signin:
+* /users/signin:
 *   post:
 *     summary: Signin by user credential
 *     tags: [Users]
@@ -54,7 +55,7 @@ const router = express.Router();
 *            $ref: '#/definitions/userSignInDef'
 *     responses:
 *       200:
-*         description: The user details
+*         description: The user informations
 *       500:
 *         description: Something went wrong
 * definitions:
@@ -80,9 +81,9 @@ router.post('/signin', signin);
 
 /**
 * @swagger
-* /user/signup:
+* /users/signup:
 *   post:
-*     summary: Signin by user credential
+*     summary: Signup by user details
 *     tags: [Users]
 *     requestBody:
 *      required: true
@@ -92,7 +93,7 @@ router.post('/signin', signin);
 *            $ref: '#/definitions/userSignUpDef'
 *     responses:
 *       201:
-*         description: The user details
+*         description: The user informations
 *       500:
 *         description: Something went wrong
 * definitions:

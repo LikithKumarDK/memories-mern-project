@@ -47,8 +47,8 @@ app.get('/', (req, res) => {
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
+app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
-app.use('/user', userRoutes);
 
 // Normal
 // const port = process.env.PORT || 5000;
