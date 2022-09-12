@@ -45,7 +45,7 @@ const router = express.Router();
 * @swagger
 * /users/signin:
 *   post:
-*     summary: Signin by user credential
+*     summary: Login
 *     tags: [Users]
 *     requestBody:
 *      required: true
@@ -83,7 +83,7 @@ router.post('/signin', signin);
 * @swagger
 * /users/signup:
 *   post:
-*     summary: Signup by user details
+*     summary: Register
 *     tags: [Users]
 *     requestBody:
 *      required: true
