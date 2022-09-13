@@ -1,7 +1,7 @@
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
-const options = {
+const swaggerSpec = swaggerJsdoc({
   definition: {
     openapi: '3.0.0',
     info: {
@@ -9,12 +9,31 @@ const options = {
       description: 'A Simple Express Memories API',
       version: '1.0.0',
     },
+    basePath: '/',
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          in: "header",
+          bearerFormat: "JWT"
+        },
+        // jwt: {
+        //   type: "http",
+        //   scheme: "bearer",
+        //   in: "header",
+        //   bearerFormat: "JWT"
+        // },
+      }
+    },
+    security: [{
+      bearerAuth: [],
+      // jwt: []
+    }],
   },
   // looks for configuration in specified directories
   apis: ['./routes/*.js'],
-}
-
-const swaggerSpec = swaggerJsdoc(options)
+});
 
 function swaggerDocs(app, port) {
   // Swagger Page

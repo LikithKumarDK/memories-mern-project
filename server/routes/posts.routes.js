@@ -49,7 +49,7 @@ const router = express.Router();
 * @swagger
 * /posts:
 *   get:
-*     summary: Returns the list of post memories
+*     summary: Get All Posts
 *     tags: [Posts]
 *     responses:
 *       200:
@@ -64,7 +64,7 @@ router.get('/', getPosts);
 * @swagger
 * /posts:
 *   post:
-*     summary: Create a new post memorie
+*     summary: Create a Post
 *     tags: [Posts]
 *     requestBody:
 *      required: true
@@ -72,8 +72,10 @@ router.get('/', getPosts);
 *        application/json:
 *          schema:
 *            $ref: '#/definitions/postCreateDef'
+*     security:
+*      - bearerAuth: []
 *     responses:
-*       200:
+*       201:
 *         description: The created post memorie
 *       409:
 *         description: Something went wrong
@@ -97,9 +99,98 @@ router.get('/', getPosts);
 
 router.post('/', auth, createPost);
 
+/**
+* @swagger
+* /posts/{id}:
+*   patch:
+*     summary: Update a Post
+*     tags: [Posts]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The post id
+*     requestBody:
+*      required: true
+*      content:
+*        application/json:
+*          schema:
+*            $ref: '#/definitions/postUpdateDef'
+*     security:
+*      - bearerAuth: []
+*     responses:
+*       200:
+*         description: The update post memorie
+*       404:
+*         description: Something went wrong
+* definitions:
+*   postUpdateDef:           
+*     type: object
+*     properties:
+*       title:
+*         type: string
+*       message:
+*         type: string
+*       creator:
+*         type: string
+*       selectedFile:
+*         type: string
+*       tags:
+*         type: array
+*         items:
+*          type: string
+*/
 
 router.patch('/:id', auth, updatePost);
+
+/**
+* @swagger
+* /posts/{id}:
+*   delete:
+*     summary: Delete a Post
+*     tags: [Posts]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The post id
+*     security:
+*      - bearerAuth: []
+*     responses:
+*       200:
+*         description: The delete post memorie
+*       404:
+*         description: Something went wrong
+*/
+
 router.delete('/:id', auth, deletePost);
+
+/**
+* @swagger
+* /posts/{id}/likePost:
+*   patch:
+*     summary: Like a Post
+*     tags: [Posts]
+*     parameters:
+*       - in: path
+*         name: id
+*         schema:
+*           type: string
+*         required: true
+*         description: The post id
+*     security:
+*      - bearerAuth: []
+*     responses:
+*       200:
+*         description: The Like post memorie
+*       404:
+*         description: Something went wrong
+*/
+
 router.patch('/:id/likePost', auth, likePost);
 
 export default router;
